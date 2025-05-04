@@ -1,0 +1,1 @@
+double root(double (*f)(double), double (*g)(double), double a, double b, double eps1, int *iterations);
