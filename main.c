@@ -18,7 +18,7 @@ int main(int argc, char *argv[]) {
     for (int i = 1; i < argc - 1; i++) {
         if (!strcmp(argv[i], "-help")) {
             printf(
-                "Calculates surface between three functions:\n"
+                "Calculates surface area between three functions:\n"
                 "f1 = exp(-x) + 3, f2 = 2 * x - 2, f3 = 1 / x\n"
                 "-help - prints information about program\n"
                 "-testr f1 f2 a b eps - tests root function\n"
