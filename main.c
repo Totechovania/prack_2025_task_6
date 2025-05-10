@@ -9,13 +9,15 @@ int main(int argc, char *argv[]) {
 
     int iter = 0;
     int inter = 0;
+    double eps = 10e-5;
 
     int test_f_1, test_f_2;
     double test_a, test_b, test_eps;
     char *fun_dis[] = {"exp(-x) + 3", "2x - 2", "1 / x"};
     double (*funs[])(double) = {f1, f2, f3};
 
-    for (int i = 1; i < argc - 1; i++) {
+    
+    for (int i = 1; i < argc; i++) {
         if (!strcmp(argv[i], "-help")) {
             printf(
                 "Calculates surface area between three functions:\n"
@@ -25,6 +27,7 @@ int main(int argc, char *argv[]) {
                 "-testi f a b eps - tests root function\n"
                 "-inter - intersection points are printed if enabled\n"
                 "-iter - amount of iterations for each intersection of points is printed if enabled\n"
+                "-eps eps - sets calculation accuracy to eps"
                 );
             
             return 0;
@@ -78,16 +81,25 @@ int main(int argc, char *argv[]) {
             printf("%lf\n", res);
 
             return 0;
+        } else if (!strcmp(argv[i], "-eps")) {
+            if (argc - i - 1 < 1) {
+                printf("Not enought arguments\n");
+
+                return 1;
+            }
+
+            i++;
+            eps = atof(argv[i]);
+            
         } else {
             printf("Unknown flag: %s\n", argv[i]);
 
             return 1;
         }
+        
     }
 
     int iterations;
-
-    double eps = atof(argv[argc - 1]);
 
     double x1 = root(f1, f3, 0.01, 1, eps / 4, &iterations);
     if (iter || inter) {
