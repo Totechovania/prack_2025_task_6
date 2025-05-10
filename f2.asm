@@ -1,5 +1,3 @@
-section .data
-    consts dq 2., -2.
 section .text
 global f2
 f2:
@@ -7,10 +5,15 @@ f2:
     mov ebp, esp
 
     finit
-    fld qword[ebp + 8]; a
-    fld qword[consts]
+    fld qword[ebp + 8]
+    fld1
+    fld1
+    fadd
     fmul
-    fld qword[consts + 8]
+    fld1 
+    fld1
+    fadd
+    fchs
     fadd
     
     mov esp, ebp

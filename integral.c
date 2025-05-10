@@ -32,8 +32,6 @@ double integral(double (*f)(double), double a, double b, double eps2){
             odd += f(a + i * h);
         }
 
-        printf("%lf\n", res_2n);
-
         res_n = res_2n;
         res_2n = h * (edges + 2 * even + 4 * odd) / 3;
 
