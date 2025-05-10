@@ -54,8 +54,6 @@ int main(int argc, char *argv[]) {
 
             double res = root(funs[test_f_1 - 1], funs[test_f_2 - 1], test_a, test_b, test_eps, NULL);
 
-            printf("%s = %s\nfrom %lf to %lf\nwith an epsilon accuracy of %lf at\nx = ",
-                fun_dis[test_f_1 - 1], fun_dis[test_f_2 - 1],  test_a, test_b, test_eps);
             printf("%lf\n", res);
 
             return 0;
@@ -75,9 +73,7 @@ int main(int argc, char *argv[]) {
             test_eps = atof(argv[i + 4]);
 
             double res = integral(funs[test_f_1 - 1], test_a, test_b, test_eps);
-
-            printf("Integral of f = %s\nfrom %lf to %lf\nwith an epsilon accuracy of %lf is:\n",
-                fun_dis[test_f_1 - 1], test_a, test_b, test_eps);    
+   
             printf("%lf\n", res);
 
             return 0;
@@ -139,8 +135,6 @@ int main(int argc, char *argv[]) {
     area -= integral(f2, x2, x3, eps / 2);
 
     printf("area = %lf\n", area);
-
-
 
     return 0;
 }

@@ -18,7 +18,7 @@ double root(double (*f)(double), double (*g)(double), double a, double b, double
     double x_0 = b;
     double v_x_0 = f(x_0) - g(x_0);
 
-    while (fabs(x_1 - x_0) > eps1 || fabs(v_x_0) > eps1) {
+    while ((f(x_0 - eps1 / 2) - g(x_0 - eps1 /2))*(f(x_0 + eps1 / 2) - g(x_0 + eps1/2)) > 0) {
         v_a = f(a) - g(a);
         v_b = f(b) - g(b);
 
