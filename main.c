@@ -9,7 +9,10 @@ int main(int argc, char *argv[]) {
 
     int iter = 0;
     int inter = 0;
+
     double eps = 10e-5;
+    double eps1 = 0.01 * eps;
+    double eps2 = 0.1 * eps;
 
     int test_f_1, test_f_2;
     double test_a, test_b, test_eps;
@@ -54,7 +57,7 @@ int main(int argc, char *argv[]) {
 
             double res = root(funs[test_f_1 - 1], funs[test_f_2 - 1], test_a, test_b, test_eps, NULL);
 
-            printf("%lf\n", res);
+            printf("%.15lf\n", res);
 
             return 0;
 
@@ -74,7 +77,7 @@ int main(int argc, char *argv[]) {
 
             double res = integral(funs[test_f_1 - 1], test_a, test_b, test_eps);
    
-            printf("%lf\n", res);
+            printf("%.15lf\n", res);
 
             return 0;
         } else if (!strcmp(argv[i], "-eps")) {
@@ -97,7 +100,8 @@ int main(int argc, char *argv[]) {
 
     int iterations;
 
-    double x1 = root(f1, f3, 0.01, 1, eps / 4, &iterations);
+
+    double x1 = root(f1, f3, 0.01, 1, eps1, &iterations);
     if (iter || inter) {
         printf("%s = %s:\n", fun_dis[0], fun_dis[2]);
         if (iter)
@@ -108,7 +112,7 @@ int main(int argc, char *argv[]) {
         putchar('\n');
     }
 
-    double x2 = root(f2, f3, 1, 2, eps / 4, &iterations);
+    double x2 = root(f2, f3, 1, 2, eps1, &iterations);
     if (iter || inter) {
         printf("%s = %s:\n", fun_dis[1], fun_dis[2]);
         if (iter)
@@ -119,7 +123,7 @@ int main(int argc, char *argv[]) {
         putchar('\n');
     }
 
-    double x3 = root(f1, f2, 2, 3, eps / 4, &iterations);
+    double x3 = root(f1, f2, 2, 3, eps1, &iterations);
     if (iter || inter) {
         printf("%s = %s:\n", fun_dis[0], fun_dis[1]);
         if (iter)
@@ -130,9 +134,9 @@ int main(int argc, char *argv[]) {
         putchar('\n');
     }
 
-    double area = integral(f1, x1, x3, eps / 2);
-    area -= integral(f3, x1, x2, eps / 2);
-    area -= integral(f2, x2, x3, eps / 2);
+    double area = integral(f1, x1, x3, eps2);
+    area -= integral(f3, x1, x2, eps2);
+    area -= integral(f2, x2, x3, eps2);
 
     printf("area = %lf\n", area);
 

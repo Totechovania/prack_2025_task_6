@@ -18,13 +18,9 @@ double root(double (*f)(double), double (*g)(double), double a, double b, double
     double x_0 = b;
     double v_x_0 = f(x_0) - g(x_0);
 
-    while ((f(x_0 - eps1 / 2) - g(x_0 - eps1 /2))*(f(x_0 + eps1 / 2) - g(x_0 + eps1/2)) > 0) {
+    while ((f(x_0 - eps1) - g(x_0 - eps1))*(f(x_0 + eps1) - g(x_0 + eps1)) > 0) {
         v_a = f(a) - g(a);
         v_b = f(b) - g(b);
-
-        if(v_a * v_b > 0) {
-            printf("incorrect input segment: [%lf;%lf]\n", a, b);
-        }
     
         x_1 = x_0;
         x_0 = a - v_a /(v_b - v_a) * (b - a);
