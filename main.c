@@ -11,8 +11,6 @@ int main(int argc, char *argv[]) {
     int inter = 0;
 
     double eps = 10e-5;
-    double eps1 = 0.01 * eps;
-    double eps2 = 0.1 * eps;
 
     int test_f_1, test_f_2;
     double test_a, test_b, test_eps;
@@ -99,6 +97,8 @@ int main(int argc, char *argv[]) {
     }
 
     int iterations;
+    double eps1 = 0.01 * eps;
+    double eps2 = 0.1 * eps;
 
 
     double x1 = root(f1, f3, 0.01, 1, eps1, &iterations);
