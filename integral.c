@@ -1,6 +1,12 @@
 #include <math.h>
 #include "integral.h"
 
+/* calculates integral of f at given segment [a, b]
+ * @param f function
+ * @param a segment start
+ * @param b segment end
+ * @param eps2 accurasy of calculations
+ */
 double integral(double (*f)(double), double a, double b, double eps2){
     int n = 1;
     double h = (b - a) / (2 * n);

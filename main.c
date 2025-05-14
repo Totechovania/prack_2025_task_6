@@ -5,6 +5,7 @@
 #include "root.h"
 #include "functions.h"
 
+
 int main(int argc, char *argv[]) {
 
     int iter = 0;
@@ -17,7 +18,7 @@ int main(int argc, char *argv[]) {
     char *fun_dis[] = {"exp(-x) + 3", "2x - 2", "1 / x"};
     double (*funs[])(double) = {f1, f2, f3};
 
-    
+    // flag processing
     for (int i = 1; i < argc; i++) {
         if (!strcmp(argv[i], "-help")) {
             printf(
@@ -28,7 +29,7 @@ int main(int argc, char *argv[]) {
                 "-testi f a b eps - tests root function\n"
                 "-inter - intersection points are printed if enabled\n"
                 "-iter - amount of iterations for each intersection of points is printed if enabled\n"
-                "-eps eps - sets calculation accuracy to eps"
+                "-eps eps - sets calculation accuracy to eps\n"
                 );
             
             return 0;
@@ -100,7 +101,7 @@ int main(int argc, char *argv[]) {
     double eps1 = 0.01 * eps;
     double eps2 = 0.1 * eps;
 
-
+    // root calculations
     double x1 = root(f1, f3, 0.01, 1, eps1, &iterations);
     if (iter || inter) {
         printf("%s = %s:\n", fun_dis[0], fun_dis[2]);
@@ -134,6 +135,9 @@ int main(int argc, char *argv[]) {
         putchar('\n');
     }
 
+
+    // integral calculations
+    
     double area = integral(f1, x1, x3, eps2);
     area -= integral(f3, x1, x2, eps2);
     area -= integral(f2, x2, x3, eps2);

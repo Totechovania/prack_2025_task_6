@@ -12,18 +12,18 @@ main.o: main.c
 	 gcc  $^ $(COMP_OPT) $@
 
 main.c: integral.h root.h
-
+	touch $@
 
 root.o: root.c
 	 gcc  $^ $(COMP_OPT) $@ 
+root.c: root.h
+	touch $@
 
 
 integral.o: integral.c
 	 gcc  $^ $(COMP_OPT) $@
-
-
-test_functions.o: test_functions.c
-	gcc $^ $(COMP_OPT) $@
+integral.c: root.h
+	touch $@
 
 f1.o: f1.asm
 	nasm $^ -f elf32 -o $@

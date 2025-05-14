@@ -3,7 +3,14 @@
 #include <stdlib.h>
 #include <stdio.h>
 
-
+/* calculates intersection of g and f at given segment [a, b]
+ * @param f first function
+ * @param g second function
+ * @param a segment start
+ * @param b segment end
+ * @param eps1 accurasy of calculations
+ * @param iterations point to interetions counter
+ */
 double root(double (*f)(double), double (*g)(double), double a, double b, double eps1,  int *iterations) {
     int i = 0;
 
